@@ -12,7 +12,12 @@ import java.time.format.DateTimeFormatterBuilder;
 import static java.time.temporal.ChronoField.YEAR;
 
 public class LogLevelCounter {
-
+    /**
+     * Function counts syslog priority levels per hour.
+     * Parse log priority level and hour from string.
+     * @param inputRDD - input rdd data for processing
+     * @return result in JavaPairRDD<String, Integer>  format
+     */
     public static JavaPairRDD<String, Integer> counLogLevelPerHour(JavaRDD<String> inputRDD){
         JavaPairRDD<String, Integer> rdd = inputRDD.mapToPair(w -> {
             String[] split = w.split("\\s");

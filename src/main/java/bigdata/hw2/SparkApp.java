@@ -10,6 +10,9 @@ import org.apache.spark.api.java.JavaSparkContext;
 import org.apache.spark.sql.SparkSession;
 import scala.Tuple2;
 
+/**
+ * Counts syslog priority levels per hour
+ */
 @Log4j
 public class SparkApp {
     public static void main(String[] args) {
