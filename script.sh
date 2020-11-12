@@ -28,6 +28,7 @@ start-yarn.sh
 hdfs dfs -rm -r input
 hdfs dfs -rm -r output
 hdfs dfs -put ~/Desktop/hw2/input input
-spark-submit --class bigdata.hw2.SparkApp --master local ~/Desktop/hw2/target/hw2-1.0-SNAPSHOT.jar
+spark-submit --class bigdata.hw2.SparkApp --master local ~/Desktop/hw2/target/hw2-1.0-SNAPSHOT.jar \
+  hdfs://localhost:9000/user/root/input hdfs://localhost:9000/user/root/output/
 
 hdfs dfs -cat output/part-00000

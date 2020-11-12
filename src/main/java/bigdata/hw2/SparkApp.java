@@ -18,10 +18,9 @@ public class SparkApp {
     public static void main(String[] args) {
         SparkConf conf = new SparkConf().setAppName("spark.lab").setMaster("local");
         try(final JavaSparkContext context = new JavaSparkContext(conf)) {
-            JavaRDD<String> textFile = context.textFile("hdfs://localhost:9000/user/root/input");
+            JavaRDD<String> textFile = context.textFile(args[0]);
             JavaPairRDD<String, Integer> resultRDD = LogLevelCounter.counLogLevelPerHour(textFile);
-            resultRDD.saveAsTextFile("hdfs://localhost:9000/user/root/output/");
-
+            resultRDD.saveAsTextFile(args[1]);
         }
     }
 }
